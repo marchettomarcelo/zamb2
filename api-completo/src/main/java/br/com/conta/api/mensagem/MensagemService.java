@@ -60,11 +60,11 @@ public class MensagemService {
         return msg;
     }
 
-    public List<MensagemTexto> getMensagensTexto() {
+    public List<MensagemTexto> getAllMensagensTexto() {
         return mensagensTexto;
     }
 
-    public List<MensagemArquivo> getMensagensArquivo() {
+    public List<MensagemArquivo> getAllMensagensArquivo() {
         return mensagensArquivo;
     }
 
@@ -85,6 +85,33 @@ public class MensagemService {
         }
         return null;
     }
+
+    public List<MensagemArquivo> getMensagensArquivoByUser( String userId) {
+
+        List<MensagemArquivo> msg = new ArrayList<>(); 
+
+        for (MensagemArquivo mensagem : mensagensArquivo) {
+            if (mensagem.getSender().getId().equals(userId)) {
+                msg.add(mensagem);
+            }
+        }
+        return msg;
+    }
+    
+    public List<MensagemTexto> getMensagensTextoByUser( String userId) {
+
+        List<MensagemTexto> msg = new ArrayList<>(); 
+
+        for (MensagemTexto mensagem : mensagensTexto) {
+            if (mensagem.getSender().getId().equals(userId)) {
+                msg.add(mensagem);
+            }
+        }
+        return msg;
+    }
+
+  
+
 
 
 }

@@ -20,6 +20,8 @@ public class MensagemController {
         return "Mensagem";
     }
 
+    // --- 1  e 2 ---
+
     @PostMapping("/texto")
     public MensagemTexto createMensagemTexto(@PathVariable String userId, String receiverId, String data, String texto ) {
         return mensagemService.createTextMessage(userId, receiverId, data, texto);
@@ -29,6 +31,20 @@ public class MensagemController {
     public MensagemArquivo creareMensagemArquivo(@PathVariable String userId, String receiverId, String data, String nomeArquivo, String linkArquivo ) {
         return mensagemService.createArquivoMessage(userId, receiverId, data, nomeArquivo, linkArquivo );
     }
+
+    // --- 3 ---
+
+    @GetMapping("/texto")
+    public List<MensagemTexto> getAllMensagensTexto() {
+        return mensagemService.getAllMensagensTexto();
+    }
+
+    @GetMapping("/arquivo")
+    public List<MensagemArquivo> getAllMensagensArquivo() {
+        return mensagemService.getAllMensagensArquivo();
+    }
+
+    // --- 4 ---
 
     @GetMapping("/texto/{msgId}")
     public MensagemTexto getMensagemTexto(@PathVariable String msgId) {
@@ -40,14 +56,15 @@ public class MensagemController {
         return mensagemService.getMensagensArquivo(msgId);
     }
 
-    @GetMapping("/texto")
-    public List<MensagemTexto> getMensagensTexto() {
-        return mensagemService.getMensagensTexto();
+    // --- 5 ---
+    @GetMapping("/arquivo/{userId}/user")
+    public List<MensagemArquivo> getMensagensArquivoUser(@PathVariable String userId) {
+        return mensagemService.getMensagensArquivoByUser(userId);
     }
-
-    @GetMapping("/arquivo")
-    public List<MensagemArquivo> getMensagensArquivo() {
-        return mensagemService.getMensagensArquivo();
+   
+    @GetMapping("/texto/{userId}/user")
+    public List<MensagemTexto> getMensagensTextoUser(@PathVariable String userId) {
+        return mensagemService.getMensagensTextoByUser(userId);
     }
     
 }

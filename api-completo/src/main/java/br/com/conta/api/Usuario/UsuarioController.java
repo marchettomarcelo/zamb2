@@ -2,6 +2,7 @@ package br.com.conta.api.Usuario;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,5 +23,10 @@ public class UsuarioController {
     @GetMapping
     public List<Usuario> getUsuarios() {
         return usuarioService.getUsuarios();
+    }
+
+    @PostMapping
+    public Usuario createUsuario(String nome, String email, String aniversario) {
+        return usuarioService.createUsuario(nome, email, aniversario);
     }
 }
