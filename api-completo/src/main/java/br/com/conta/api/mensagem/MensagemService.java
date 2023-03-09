@@ -1,8 +1,5 @@
 package br.com.conta.api.mensagem;
 
-import org.apache.catalina.User;
-import org.apache.logging.log4j.message.Message;
-
 import br.com.conta.api.Usuario.Usuario;
 import br.com.conta.api.Usuario.UsuarioService;
 
